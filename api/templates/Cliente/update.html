@@ -1,0 +1,25 @@
+<!-- templates/clientes/editar.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Editar Cliente</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_nombre">Nombre</label>
+            <input type="text" name="nombre" id="id_nombre" class="form-control" value="{{ cliente.nombre }}" required>
+        </div>
+        <div class="form-group">
+            <label for="id_email">Email</label>
+            <input type="email" name="email" id="id_email" class="form-control" value="{{ cliente.email }}" required>
+        </div>
+        <div class="form-group">
+            <label for="id_telefono">Teléfono</label>
+            <input type="tel" name="telefono" id="id_telefono" class="form-control" value="{{ cliente.telefono }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{% url 'cliente_list' %}" class="btn btn-secondary ml-2">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

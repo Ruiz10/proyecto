@@ -1,0 +1,13 @@
+<!-- templates/mesa/details.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Detalles Mesa</h1>
+    <p><strong>Número:</strong> {{ mesa.numero_mesa }}</p>
+    <p><strong>Capacidad:</strong> {{ mesa.capacidad }}</p>
+    <a href="{% url 'mesa_update' mesa.pk %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'mesa_delete' mesa.pk %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'mesa_list' %}" class="btn btn-secondary">Volver al listado</a>
+</div>
+{% endblock %}

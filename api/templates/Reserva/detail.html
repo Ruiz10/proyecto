@@ -1,0 +1,15 @@
+<!-- templates/reserva/details.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Detalles Reserva</h1>
+    <p><strong>Cliente:</strong> {{ reserva.cliente }}</p>
+    <p><strong>Mesa:</strong> {{ reserva.mesa }}</p>
+    <p><strong>Fecha:</strong> {{ reserva.fecha }}</p>
+    <p><strong>Hora:</strong> {{ reserva.hora }}</p>
+    <a href="{% url 'reserva_update' reserva.pk %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'reserva_delete' reserva.pk %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'reserva_list' %}" class="btn btn-secondary">Volver al listado</a>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Editar Reserva</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_fecha">Fecha</label>
+            <input type="date" name="fecha" id="id_fecha" class="form-control" value="{{ reserva.fecha }}" required>
+        </div>
+        <div class="form-group">
+            <label for="id_hora">Hora</label>
+            <input type="time" name="hora" id="id_hora" class="form-control" value="{{ reserva.hora }}" required>
+        </div>
+        <div class="form-group">
+            <label for="id_cliente">Cliente</label>
+            <select name="cliente" id="id_cliente" class="form-control" required>
+                {% for cliente in clientes %}
+                <option value="{{ cliente.id }}" {% if cliente.id == reserva.cliente.id %}selected{% endif %}>
+                    {{ cliente.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_mesa">Mesa</label>
+            <select name="mesa" id="id_mesa" class="form-control" required>
+                {% for mesa in mesas %}
+                <option value="{{ mesa.id }}" {% if mesa.id == reserva.mesa.id %}selected{% endif %}>
+                    Mesa {{ mesa.numero_mesa }} ({{ mesa.capacidad }} personas)
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{% url 'reserva_list' %}" class="btn btn-secondary ml-2">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

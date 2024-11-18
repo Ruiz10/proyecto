@@ -1,0 +1,16 @@
+<!-- templates/clientes/detalles.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Detalles cliente</h1>
+    <p><strong>Nombre:</strong>{{ cliente.nombre}}</p>
+    <p><strong>Email:</strong>{{ cliente.email}}</p>
+    <p><strong>Telefono:</strong>{{ cliente.telefono}}</p>
+    <a href="{% url 'cliente_update' cliente.pk %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'cliente_delete' cliente.pk %}" class="btn btn-danger">Eliminar</a>
+    <a href="{% url 'cliente_list' %}" class="btn btn-secondary">Volver al listado</a>
+
+
+</div>
+{% endblock %}

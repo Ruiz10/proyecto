@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Lista de Mesas</h1>
+    <a href="{% url 'mesa_create' %}" class="btn btn-success mb-3">Crear Mesa</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Mesa</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mesa in mesas %}
+            <tr>
+                <td>{{ mesa.numero_mesa }}</td>
+                <td>{{ mesa.capacidad }}</td>
+                <td>
+                    <a href="{% url 'mesa_update' mesa.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'mesa_delete' mesa.pk %}" class="btn btn-danger btn-sm">Borrar</a>
+                    <a href="{% url 'mesa_detail' mesa.pk %}" class="btn btn-danger btn-sm">detalles</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
